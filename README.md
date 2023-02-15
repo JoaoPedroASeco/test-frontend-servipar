@@ -53,3 +53,8 @@ To transform the report into PDF, just click on the "EXPORTAR PARA PDF" button
 ## App on vercel
 
 I uploaded the application to Vercel, follow the link: https://test-frontend-servipar.vercel.app/  ->  All these features are available
+
+## Me
+
+Github: https://github.com/JoaoPedroASeco
+Public repository: https://github.com/JoaoPedroASeco/test-backend-servipar
