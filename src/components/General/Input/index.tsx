@@ -1,3 +1,5 @@
+import { CSSProperties } from "@stitches/react";
+import { ReactNode } from "react";
 import { ThemeinputContainer } from "./styles";
 
 type ThemeInputType = {
@@ -9,6 +11,8 @@ type ThemeInputType = {
   onChange?: (_: any) => void;
   placeholder?: string;
   error?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
 };
 
 export const ThemeInput = ({
@@ -20,20 +24,40 @@ export const ThemeInput = ({
   onChange,
   placeholder,
   error,
+  style,
+  children,
 }: ThemeInputType) => {
   return (
-    <ThemeinputContainer className="theme-input">
+    <ThemeinputContainer className="theme-input" style={{ ...style }}>
       {label && <label htmlFor={id}>{label}:</label>}
-      <input
-        style={{ border: `${error ? "2px solid #FD5E5E" : ""}` }}
-        id={id}
-        type={type}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        autoComplete="off"
-      />
+
+      {type != "select" && (
+        <input
+          style={{ border: `${error ? "2px solid #FD5E5E" : ""}` }}
+          id={id}
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          autoComplete="off"
+        />
+      )}
+
+      {type === "select" && (
+        <select
+          style={{ ...style }}
+          name={name}
+          id={id}
+          defaultValue={1}
+          onChange={onChange}
+          value={value}
+        >
+          <option value={1}>Escolha uma opção</option>
+          {children}
+        </select>
+      )}
+
       {error && <span className="input-error">{error}</span>}
     </ThemeinputContainer>
   );

@@ -1,6 +1,6 @@
-import Head from "next/head";
 import { LoginFormulary } from "../components/LoginFormulary";
 import { LoginHeader } from "../components/LoginHeader";
+import Head from "next/head";
 
 //Styles
 import { LoginContainer, LoginComponent } from "./Login";

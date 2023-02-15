@@ -1,19 +1,26 @@
-import { api } from "@/services/api";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { CreateProductModal } from "../components/CreateProductModal";
 
-export const HomeScreen = ({ products }: { products: any }) => {
+//Components
+import { ProductsTable } from "../components/ProductsTable";
+
+//Styles
+import { HomeComponent, HomeContainer } from "./styles";
+
+export const HomeScreen = () => {
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
 
-      <div>
-        {products.map((product: any) => (
-          <li key={product.id}>{product.id}</li>
-        ))}
-      </div>
+      <HomeContainer>
+        <HomeComponent>
+          <ProductsTable />
+        </HomeComponent>
+      </HomeContainer>
+
+      <CreateProductModal />
     </>
   );
 };

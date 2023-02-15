@@ -4,6 +4,7 @@ import {
   ChangeEvent,
   useCallback,
   useEffect,
+  useContext,
 } from "react";
 import Router from "next/router";
 
@@ -11,7 +12,8 @@ import Router from "next/router";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import axios from "axios";
-import { setCookie, parseCookies, destroyCookie } from "nookies";
+import { setCookie, destroyCookie } from "nookies";
+import { api } from "@/services/api";
 
 //Styles
 import { LoginFormularyContainer } from "./styles";
@@ -19,13 +21,15 @@ import { LoginFormularyContainer } from "./styles";
 //Components
 import { ThemeButton } from "@/components/General/Button";
 import { ThemeInput } from "@/components/General/Input";
-import { api } from "@/services/api";
+
+//Contexts
+import { GeneralContext } from "@/contexts/GeneralContext";
 
 //Types
-interface FormData {
+type FormData = {
   email: string;
   password: string;
-}
+};
 
 //Schema
 const schema = yup.object().shape({
@@ -41,9 +45,10 @@ const schema = yup.object().shape({
 });
 
 export const LoginFormulary = () => {
+  const { cookies } = useContext(GeneralContext);
   const [formData, setFormData] = useState<FormData>({
-    email: "",
-    password: "",
+    email: "bruno@email.com",
+    password: "bruno",
   });
   const [formErrors, setFormErrors] = useState<{
     email?: string;
@@ -52,16 +57,19 @@ export const LoginFormulary = () => {
   const [isRegistringUser, setIsRegistringUser] = useState(false);
 
   useEffect(() => {
-    const cookies = parseCookies();
-
     if (cookies && cookies.undefined_token) {
       toast.error("Login necessario");
       destroyCookie(null, "undefined_token");
-    } else if (cookies && cookies.invalid_token) {
+    }
+    if (cookies && cookies.invalid_token) {
       toast.error("Seu login expirou! faça o login novamente!");
       destroyCookie(null, "invalid_token");
     }
-  }, []);
+    if (cookies && cookies.logout) {
+      toast.success("Logout feito com sucesso!");
+      destroyCookie(null, "logout");
+    }
+  }, [cookies]);
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +93,12 @@ export const LoginFormulary = () => {
           formData
         );
 
-        setCookie(null, "acess_token", data.access_token, {
+        setCookie(null, "access_token", data.access_token, {
+          maxAge: 60 * 60 * 24 * 30,
+          path: "/",
+        });
+
+        setCookie(null, "user", JSON.stringify(formData.email), {
           maxAge: 60 * 60 * 24 * 30,
           path: "/",
         });
@@ -96,12 +109,14 @@ export const LoginFormulary = () => {
           !isRegistringUser ? "Login efetuado!" : "Sucesso ao cadastrar!"
         );
       } catch (error: any) {
-        if (error?.inner?.lenght) {
+        if (error?.inner) {
           const errorObject = error.inner.reduce((errors: any, err: any) => {
             errors[err.path] = err.message;
             return errors;
           }, {});
           setFormErrors(errorObject);
+
+          return;
         }
 
         console.log(error);

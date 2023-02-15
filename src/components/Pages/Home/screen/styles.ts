@@ -7,3 +7,14 @@ export const HomeContainer = styled("div", {
   alignItems: "center",
   height: "100vh",
 });
+
+export const HomeComponent = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  width: "90vw",
+  height: "80vh",
+  backgroundColor: "$gray600",
+  borderRadius: "1rem",
+  padding: "2rem",
+});
