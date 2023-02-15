@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Test Front-end Servipar</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="test-front-end-servipar">Test Front-end Servipar</h1>
+<p>A simple nextjs app</p>
+<h2 id="install">Install</h2>
+<pre><code class="language-bash">$ npm install
+$ npm run dev
+</code></pre>
+<h2 id="how-to-loginregister">How to login/register?</h2>
+<p>I left a default login configured :</p>
+<ul>
+<li>email: <a href="mailto:bruno@email.com">bruno@email.com</a></li>
+<li>password: bruno</li>
+</ul>
+<p>just click on &quot;Login&quot; and be redirected to &quot;/home&quot;</p>
+<p>If you prefer to choose another user, just use one of these credentials below:</p>
+<pre><code class="language-bash">{ <span class="hljs-string">&quot;id&quot;</span>: 1, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;bruno@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;bruno&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 2, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;techie@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;techie&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 3, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 4, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson1@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 5, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson2@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 6, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson3@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 7, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson4@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 8, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson7@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+{ <span class="hljs-string">&quot;id&quot;</span>: 9, <span class="hljs-string">&quot;email&quot;</span>: <span class="hljs-string">&quot;nilson8@email.com&quot;</span>, <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;nilson&quot;</span> },
+</code></pre>
+<h2 id="sort-and-add-products">Sort and Add Products</h2>
+<p>To order the products, just click on the headings of each column, such as &quot;nome&quot;, &quot;preço&quot;, etc...</p>
+<p>To add products to the list just click on the bottom left button &quot;Adicionar Produto&quot;, this will open a Modal with a form; Fill in the fields correctly and click &quot;Cadastrar&quot;.</p>
+<h2 id="change-page-and-change-the-listing-limit">Change page and change the listing limit</h2>
+<p>To change pages it is necessary to click on the buttons arranged in the lower right corner of the page (they will be visible if there is more than 1 page to be shown).</p>
+<p>To change the limit it is necessary to click on the &quot;limit&quot; selector and select the limit according to your preference</p>
+<h2 id="produts-report">Produts Report</h2>
+<p>To have access to the products report you need to be logged in with the email user &quot;<a href="mailto:bruno@email.com">bruno@email.com</a>&quot;, only he will have access to the report.</p>
+<p>To transform the report into PDF, just click on the &quot;EXPORTAR PARA PDF&quot; button</p>
+<h2 id="app-on-vercel">App on vercel</h2>
+<p>I uploaded the application to Vercel, follow the link: <a href="https://test-frontend-servipar.vercel.app/">https://test-frontend-servipar.vercel.app/</a>  -&gt;  All these features are available</p>
+
+        <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </body>
+    </html>

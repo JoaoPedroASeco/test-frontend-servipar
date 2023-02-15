@@ -155,7 +155,11 @@ export const GeneralContextProvider = ({
   }, [fetchLenghtOfProducts]);
 
   useEffect(() => {
-    if (!router.query.limit && !router.query.page) {
+    if (
+      !router.query.limit &&
+      !router.query.page &&
+      router.pathname === "/home"
+    ) {
       router.replace({
         query: { page: paginationsOps.page, limit: paginationsOps.limit },
       });

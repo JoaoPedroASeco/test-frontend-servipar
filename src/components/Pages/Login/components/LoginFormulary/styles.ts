@@ -12,18 +12,4 @@ export const LoginFormularyContainer = styled("form", {
   button: {
     marginTop: "2rem",
   },
-
-  ".user-register-question": {
-    marginTop: "1.5rem",
-    cursor: "pointer",
-    transition: "all .4s ease-in-out",
-
-    strong: {
-      color: "$green100",
-    },
-
-    "&:hover": {
-      filter: "brightness(1.2)",
-    },
-  },
 });

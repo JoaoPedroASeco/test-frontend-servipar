@@ -54,7 +54,6 @@ export const LoginFormulary = () => {
     email?: string;
     password?: string;
   }>({});
-  const [isRegistringUser, setIsRegistringUser] = useState(false);
 
   useEffect(() => {
     if (cookies && cookies.undefined_token) {
@@ -88,10 +87,7 @@ export const LoginFormulary = () => {
       try {
         await schema.validate(formData, { abortEarly: false });
 
-        const { data } = await api.post(
-          !isRegistringUser ? "/auth/login" : "/auth/register",
-          formData
-        );
+        const { data } = await api.post("/auth/login", formData);
 
         setCookie(null, "access_token", data.access_token, {
           maxAge: 60 * 60 * 24 * 30,
@@ -105,9 +101,7 @@ export const LoginFormulary = () => {
 
         Router.push("/home");
 
-        return toast.success(
-          !isRegistringUser ? "Login efetuado!" : "Sucesso ao cadastrar!"
-        );
+        return toast.success("Login efetuado!");
       } catch (error: any) {
         if (error?.inner) {
           const errorObject = error.inner.reduce((errors: any, err: any) => {
@@ -128,7 +122,7 @@ export const LoginFormulary = () => {
         }
       }
     },
-    [formData, isRegistringUser]
+    [formData]
   );
 
   return (
@@ -155,24 +149,7 @@ export const LoginFormulary = () => {
         error={formErrors.password}
       />
 
-      <ThemeButton type="submit">
-        {!isRegistringUser ? "Login" : "Cadastrar"}
-      </ThemeButton>
-
-      <span
-        className="user-register-question"
-        onClick={() => setIsRegistringUser(!isRegistringUser)}
-      >
-        {!isRegistringUser ? (
-          <>
-            Ainda não tem uma conta? <strong>cadastre-se.</strong>
-          </>
-        ) : (
-          <>
-            Já tem uma conta? <strong>faça o Login.</strong>
-          </>
-        )}
-      </span>
+      <ThemeButton type="submit">{"Login"}</ThemeButton>
     </LoginFormularyContainer>
   );
 };

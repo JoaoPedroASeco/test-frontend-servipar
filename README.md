@@ -1,38 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Test Front-end Servipar
 
-## Getting Started
+A simple nextjs app
 
-First, run the development server:
+## Install
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ npm install
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to login/register?
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+I left a default login configured :
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- email: bruno@email.com
+- password: bruno
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+just click on "Login" and be redirected to "/home"
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+If you prefer to choose another user, just use one of these credentials below:
 
-## Learn More
+```bash
+{ "id": 1, "email": "bruno@email.com", "password": "bruno" },
+{ "id": 2, "email": "techie@email.com", "password": "techie" },
+{ "id": 3, "email": "nilson@email.com", "password": "nilson" },
+{ "id": 4, "email": "nilson1@email.com", "password": "nilson" },
+{ "id": 5, "email": "nilson2@email.com", "password": "nilson" },
+{ "id": 6, "email": "nilson3@email.com", "password": "nilson" },
+{ "id": 7, "email": "nilson4@email.com", "password": "nilson" },
+{ "id": 8, "email": "nilson7@email.com", "password": "nilson" },
+{ "id": 9, "email": "nilson8@email.com", "password": "nilson" },
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Sort and Add Products
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To order the products, just click on the headings of each column, such as "nome", "preço", etc...
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To add products to the list just click on the bottom left button "Adicionar Produto", this will open a Modal with a form; Fill in the fields correctly and click "Cadastrar".
 
-## Deploy on Vercel
+## Change page and change the listing limit
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To change pages it is necessary to click on the buttons arranged in the lower right corner of the page (they will be visible if there is more than 1 page to be shown).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To change the limit it is necessary to click on the "limit" selector and select the limit according to your preference
+
+## Produts Report
+
+To have access to the products report you need to be logged in with the email user "bruno@email.com", only he will have access to the report.
+
+To transform the report into PDF, just click on the "EXPORTAR PARA PDF" button
+
+## App on vercel
+
+I uploaded the application to Vercel, follow the link: https://test-frontend-servipar.vercel.app/  ->  All these features are available
