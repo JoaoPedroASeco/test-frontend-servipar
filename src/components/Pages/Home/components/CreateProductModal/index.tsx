@@ -57,8 +57,8 @@ type FormData = {
   name: string;
   cost: number;
   quantity: number;
-  locationId: number | "default";
-  familyId: number | "default";
+  locationId: number;
+  familyId: number;
 };
 
 export const CreateProductModal = () => {
@@ -69,9 +69,12 @@ export const CreateProductModal = () => {
     locations,
     paginationsOps,
     productsLength,
+    pagesAmount,
     setProducts,
+    setPagesAmount,
     products,
     token,
+    setProductsLength,
   } = useContext(GeneralContext);
 
   const [formData, setFormData] = useState<FormData>({
@@ -104,9 +107,11 @@ export const CreateProductModal = () => {
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       try {
-        await schema.validate(formData, { abortEarly: false });
+        const validatedFormData = await schema.validate(formData, {
+          abortEarly: false,
+        });
 
-        const { data } = await api.post("/products", formData, {
+        const { data } = await api.post("/products", validatedFormData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -122,6 +127,9 @@ export const CreateProductModal = () => {
 
         if (productsLength + 1 <= parseInt(paginationsOps.limit)) {
           setProducts([...products, data]);
+          setProductsLength(productsLength + 1);
+        } else {
+          setPagesAmount(pagesAmount + 1);
         }
 
         setIsCreateProductModalOpen(false);
@@ -153,6 +161,9 @@ export const CreateProductModal = () => {
       productsLength,
       setProducts,
       token,
+      pagesAmount,
+      setPagesAmount,
+      setProductsLength
     ]
   );
 

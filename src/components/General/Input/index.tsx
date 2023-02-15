@@ -49,11 +49,11 @@ export const ThemeInput = ({
           style={{ ...style }}
           name={name}
           id={id}
-          defaultValue={1}
+          defaultValue={0}
           onChange={onChange}
           value={value}
         >
-          <option value={1}>Escolha uma opção</option>
+          <option value={0}>Escolha uma opção</option>
           {children}
         </select>
       )}
