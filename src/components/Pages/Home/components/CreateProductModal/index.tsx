@@ -125,11 +125,18 @@ export const CreateProductModal = () => {
           familyId: 0,
         });
 
-        if (productsLength + 1 <= parseInt(paginationsOps.limit)) {
+        if (products.length + 1 <= Number(paginationsOps.limit)) {
           setProducts([...products, data]);
           setProductsLength(productsLength + 1);
-        } else {
+        }
+
+        if (
+          products.length + 1 > Number(paginationsOps.limit) &&
+          productsLength + 1 - pagesAmount * Number(paginationsOps.limit) > 0
+        ) {
           setPagesAmount(pagesAmount + 1);
+        } else {
+          setProductsLength(productsLength + 1);
         }
 
         setIsCreateProductModalOpen(false);
@@ -161,9 +168,9 @@ export const CreateProductModal = () => {
       productsLength,
       setProducts,
       token,
+      setProductsLength,
       pagesAmount,
       setPagesAmount,
-      setProductsLength
     ]
   );
 

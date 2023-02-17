@@ -169,7 +169,7 @@ export const GeneralContextProvider = ({
   useEffect(() => {
     const rest = productsLength / parseInt(paginationsOps.limit);
     setPagesAmount(Math.ceil(rest));
-  }, [paginationsOps, productsLength, setPagesAmount]);
+  }, [productsLength]);
 
   return (
     <GeneralContext.Provider
